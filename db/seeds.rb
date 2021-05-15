@@ -8,8 +8,8 @@
 
 User.destroy_all
 
-noe = User.create! :first_name => "Noe", :last_name => "Hsu", :email => "noe@gmail.com", :password => "Noe111!", :password_confirmation => "Noe111!"
-jin = User.create! :first_name => "Jin", :last_name => "Hsu", :email => "jin@gmail.com", :password => "Jin111!", :password_confirmation => "Jin111!"
+noe = User.create! :first_name => "Noe", :last_name => "Hsu", :email => "noe@gmail.com", :password => "Noe111!", :password_confirmation => "Noe111!", :location => "4109"
+jin = User.create! :first_name => "Jin", :last_name => "Hsu", :email => "jin@gmail.com", :password => "Jin111!", :password_confirmation => "Jin111!", :location=> "4109"
 
 
 noe.products.create(name: "Nioh", price: 5.0, condition: "used", console: "PS4")

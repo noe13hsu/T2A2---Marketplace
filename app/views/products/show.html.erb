@@ -4,6 +4,7 @@
 <p>Price: $<%= @product.price.to_f %></p>
 <p>Console: <%= @product.console %></p>
 <p>Condition: <%= @product.condition %></p>
+<p>Location: <%= @product.user.location %></p>
 
 <button>Add to cart</button>
 <%= link_to "<< Back", :back %>
