@@ -1,8 +1,122 @@
-<h1>Welcome</h1>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 
-<% @products.each do |product| %>
-    <div>
-        <p><%= link_to product.name, product_path(product) %></p>
-        <p><%= product.price %></p>
+<style>
+    html,
+    body {
+    position: relative;
+    height: 100%;
+    }
+
+    body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    }
+
+    .swiper-container {
+    width: 100%;
+    height: 100%;
+    }
+
+    .swiper-wrapper {
+        margin-bottom: 15px;
+    }
+
+    .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 16px;
+    background: #fff;
+    height: 37vh;
+    width: 150px;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    }
+
+    .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+
+    .padding {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+</style>
+
+<div class="row">
+    <div class="col text-center border-bottom border-2 border-dark fs-6 text padding">
+        PS4
     </div>
-<% end %>
+    <div class="col text-center border-bottom border-2 border-dark fs-6 text padding">
+        PS5
+    </div>
+    <div class="col text-center border-bottom border-2 border-dark fs-6 text padding">
+        Switch
+    </div>
+</div>
+<div class="row">
+    <div class="col text-center border-bottom border-2 border-dark fs-6 text padding">
+        Xbox X/S
+    </div>
+    <div class="col text-center border-bottom border-2 border-dark fs-6 text padding">
+        Xbox One
+    </div>
+    <div class="col text-center border-bottom border-2 border-dark fs-6 text padding">
+        PC
+    </div>
+</div>
+<br>
+
+<div class="swiper-container mySwiper">
+    <div class="swiper-wrapper">
+        <% @first_half.each do |product| %>
+            <div class="swiper-slide">
+                <p><%= link_to product.name, product_path(product) %></p>
+                <p><%= product.console %></p>
+                <p>$<%= product.price %></p>
+            </div>
+        <% end %>
+    </div>
+    <div class="swiper-wrapper">
+        <% @second_half.each do |product| %>
+            <div class="swiper-slide">
+                <p><%= link_to product.name, product_path(product) %></p>
+                <p><%= product.console %></p>
+                <p>$<%= product.price %></p>
+            </div>
+        <% end %>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 2,
+    spaceBetween: 15,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    });
+</script>
