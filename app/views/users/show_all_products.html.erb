@@ -16,6 +16,7 @@
     <div class="user-game-details">
         <img src="https://via.placeholder.com/110x150">
         <div>
+            <p><%= product.user.first_name %></p>
             <p><%= product.name %></p>
             <p>$<%= product.price %></p>
             <p><%= link_to "Update item", edit_product_path(product) %></p>

@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to show_all_products_path
+    redirect_to show_all_products_path(current_user)
   end
 
   private
