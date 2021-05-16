@@ -1,7 +1,10 @@
 <% products.each do |product| %>
     <div class="swiper-slide">
-        <p><%= link_to product.name, product_path(product) %></p>
-        <p><%= product.console %></p>
-        <p>$<%= product.price %></p>
+        <img src="https://via.placeholder.com/110x150">
+        <div class="product-details">
+            <p><%= link_to product.name, product_path(product) %></p>
+            <p><%= product.console %></p>
+            <p>$<%= product.price %></p>
+        </div>
     </div>
 <% end %>

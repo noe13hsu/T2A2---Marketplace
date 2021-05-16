@@ -1,0 +1,25 @@
+<style>
+    .user-game-details {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin: 0;
+        margin-left: 10px;
+    }
+</style>
+
+<h1>Your Games</h1>
+
+<% @user.products.each do |product| %>
+    <div class="user-game-details">
+        <img src="https://via.placeholder.com/110x150">
+        <div>
+            <p><%= product.name %></p>
+            <p>$<%= product.price %></p>
+            <p><%= link_to "Update item", edit_product_path(product) %></p>
+            <p><%= link_to "Delete item", product, method: :delete, data: { confirm: "Are you sure?" } %></p>
+        </div>    
+    </div>
+<% end %>

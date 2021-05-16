@@ -1,18 +1,37 @@
+<style>
+    .container-fluid {
+        flex-direction: row;
+    }
+
+    .name_and_menu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .navbar-toggler {
+        width: 60px;
+    }
+
+    .navbar-brand {
+        margin-right: 0;
+    }
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-        <%= link_to "Second Hand Games", root_path, class:"navbar-brand" %>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <img src="https://via.placeholder.com/80x75" alt="" class="d-inline-block align-text-top">
+        <div class="name_and_menu">
+            <%= link_to "Second Hand Games", root_path, class:"navbar-brand" %>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <% if user_signed_in? %>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <%= link_to "Your Account", user_path(current_user), class:"nav-link active" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Your Games", edit_user_registration_path, class:"nav-link active" %>
                     </li>
                     <li class="nav-item">
                         <%= link_to "Your Cart", edit_user_registration_path, class:"nav-link active" %>
