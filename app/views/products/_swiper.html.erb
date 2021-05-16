@@ -1,0 +1,7 @@
+<% products.each do |product| %>
+    <div class="swiper-slide">
+        <p><%= link_to product.name, product_path(product) %></p>
+        <p><%= product.console %></p>
+        <p>$<%= product.price %></p>
+    </div>
+<% end %>
