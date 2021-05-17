@@ -1,6 +1,5 @@
 <style>
-body {
-    background: #BFBFBF;
+  body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -44,7 +43,7 @@ body {
   }
 
   p {
-      margin-bottom: 0;
+      margin-bottom: 5px;
   }
 </style>
 <h1>Your Details</h1>
@@ -54,18 +53,16 @@ body {
 <p>Email: <%= @user.email %></p>
 <p>Mobile: <%= @user.mobile %></p>
 
-<p><%= link_to "Change Password", edit_user_registration_path %></p>
-<p><%= link_to "Update Details" %></p>
-<br>
-<%= link_to "Back", :back %>
+<%= link_to "Change Password", edit_user_registration_path, class: "btn btn-light border border-dark" %>
+<%= link_to "Update Details", edit_user_path(@user), class: "btn btn-light border border-dark" %>
 <br>
 <br>
 <h1>Your Games</h1>
-<% if @user.products.length > 0 %>
-    <p>You have listed <%=  link_to @user.products.length, your_products_path(@user) %> games</p>
+<% if @num_of_products > 0 %>
+    <p>You have listed <%=  link_to @num_of_products, your_products_path(@user) %> games</p>
     <div class="swiper-container mySwiper">
         <div class="swiper-wrapper">
-            <%= render partial: "products/swiper", locals: {products: @user.products.last(10)} %>
+            <%= render partial: "products/swiper", locals: {products: @products} %>
         </div>
         <div class="swiper-pagination"></div>
     </div>

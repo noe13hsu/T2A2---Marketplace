@@ -6,11 +6,25 @@ class UsersController < ApplicationController
     end
 
     def show
-        
+        @products = @user.products
+        @num_of_products = @products.length
+    end
+
+    def edit
+
+    end
+  
+    def update
+      if @user.update(user_params)
+        redirect_to user_path(current_user)
+      else
+        flash.now[:errors] = @user.errors.full_messages
+        render action: 'edit'
+      end
     end
 
     def your_products
-
+        @products = @user.products.order(:created_at).reverse
     end
 
     private
@@ -22,4 +36,8 @@ class UsersController < ApplicationController
             redirect_to root_path, alert: "Not Authorised"
         end 
     end
+
+    def user_params
+        params.require(:user).permit(:first_name, :last_name, :mobile, :location)
+      end
 end

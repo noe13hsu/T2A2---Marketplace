@@ -12,13 +12,19 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  # def new
-  #   @product = current_user.friends.build
-  # end
+  def new
+    @product = current_user.products.build
+  end
 
-  # def create
-  #   @product = current_user.friends.build(product_params)
-  # end
+  def create
+    @product = current_user.products.build(product_params)
+    if @product.save
+      redirect_to your_products_path(current_user)
+    else
+      flash.now[:errors] = @product.errors.full_messages
+      render action: 'new'
+    end
+  end
 
   def edit
 
@@ -46,6 +52,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price, :condition)
+    params.require(:product).permit(:name, :price, :condition, :console)
   end
 end

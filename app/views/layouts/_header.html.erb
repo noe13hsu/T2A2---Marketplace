@@ -34,7 +34,13 @@
                         <%= link_to "Your Account", user_path(current_user), class:"nav-link active" %>
                     </li>
                     <li class="nav-item">
+                        <%= link_to "Your Products", your_products_path(current_user), class:"nav-link active" %>
+                    </li>
+                    <li class="nav-item">
                         <%= link_to "Your Cart", edit_user_registration_path, class:"nav-link active" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "List Products", new_product_path, class:"nav-link active" %>
                     </li>
                     <li class="nav-item">
                         <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"nav-link active" %>
