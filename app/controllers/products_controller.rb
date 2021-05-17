@@ -25,18 +25,27 @@ class ProductsController < ApplicationController
   end
 
   def update
-
+    if @product.update(product_params)
+      redirect_to your_products_path(current_user)
+    else
+      flash.now[:errors] = @product.errors.full_messages
+      render action: 'edit'
+    end
   end
 
   def destroy
     @product.destroy
-    redirect_to show_all_products_path(current_user)
+    redirect_to your_products_path(current_user)
   end
 
   private
 
   def correct_user
     @product = current_user.products.find_by(id: params[:id])
-    redirect_to root_path, notice: "Not Authorised" if @product.nil?
+    redirect_to root_path, alert: "Not Authorised" if @product.nil?
+  end
+
+  def product_params
+    params.require(:product).permit(:name, :price, :condition)
   end
 end

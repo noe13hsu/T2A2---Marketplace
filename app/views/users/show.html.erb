@@ -54,7 +54,7 @@ body {
 <p>Email: <%= @user.email %></p>
 <p>Mobile: <%= @user.mobile %></p>
 
-<p><%= link_to "Change password", edit_user_registration_path %></p>
+<p><%= link_to "Change Password", edit_user_registration_path %></p>
 <p><%= link_to "Update Details" %></p>
 <br>
 <%= link_to "Back", :back %>
@@ -62,8 +62,7 @@ body {
 <br>
 <h1>Your Games</h1>
 <% if @user.products.length > 0 %>
-    <p>You have listed <%=  @user.products.length %> games</p>
-    <%= link_to "Show all", show_all_products_path(@user) %>
+    <p>You have listed <%=  link_to @user.products.length, your_products_path(@user) %> games</p>
     <div class="swiper-container mySwiper">
         <div class="swiper-wrapper">
             <%= render partial: "products/swiper", locals: {products: @user.products.last(10)} %>

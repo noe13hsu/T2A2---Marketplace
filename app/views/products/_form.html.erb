@@ -1,0 +1,19 @@
+<%= form_with model: @product, local: true do |f| %>
+    <div class="mb-3">
+        <%= f.label :name, class: "form-label" %>
+        <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+        <%= f.label :price, class: "form-label" %>
+        <%= f.text_field :price, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+        <%= f.label :console, class: "form-label" %>
+        <%= f.text_field :console, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+        <%= f.label :condition, class: "form-label" %>
+        <%= f.text_field :condition, class: "form-control" %>
+    </div>
+    <%= f.submit %>
+<% end %>

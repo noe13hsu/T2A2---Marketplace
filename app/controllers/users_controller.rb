@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :correct_user, only: [:update, :show, :destroy, :edit, :show_all_products]
+    before_action :correct_user, only: [:update, :show, :destroy, :edit, :your_products]
     
     def index
         
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         
     end
 
-    def show_all_products
+    def your_products
 
     end
 
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
         if params[:id] == current_user.id.to_s
             @user = User.find(params[:id])
         else
-            redirect_to root_path, notice: "Not Authorised"
+            redirect_to root_path, alert: "Not Authorised"
         end 
     end
 end
