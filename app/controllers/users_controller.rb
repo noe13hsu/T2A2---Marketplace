@@ -23,6 +23,11 @@ class UsersController < ApplicationController
       end
     end
 
+    def destroy
+      @user.destroy
+      redirect_to root_path
+    end
+
     def your_products
         @products = @user.products.order(:created_at).reverse
     end

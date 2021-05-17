@@ -21,7 +21,7 @@
     text-align: center;
     font-size: 14px;
     background: #F2F2F2;
-    height: 37vh;
+    height: 34vh;
 
     justify-content: flex-end;
     align-items: center;
@@ -37,11 +37,6 @@
     padding-bottom: 5px;
   }
 
-  .product-details {
-      height: 120px;
-      padding: 0 5px 0 5px;
-  }
-
   p {
       margin-bottom: 5px;
   }
@@ -55,6 +50,7 @@
 
 <%= link_to "Change Password", edit_user_registration_path, class: "btn btn-light border border-dark" %>
 <%= link_to "Update Details", edit_user_path(@user), class: "btn btn-light border border-dark" %>
+<%= link_to "Delete Account", @user, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger border border-dark" %>
 <br>
 <br>
 <h1>Your Games</h1>

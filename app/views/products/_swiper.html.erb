@@ -2,12 +2,17 @@
     .swiper-slide img {
         margin-top: 10px;
     }
+
+    .product-details {
+        height: 120px;
+        padding: 0 5px 0 5px;
+    }
 </style>
 
 
 <% products.each do |product| %>
     <div class="swiper-slide border border-secondary">
-        <img src="https://via.placeholder.com/110x120">
+        <img src="https://via.placeholder.com/110x130">
         <div class="product-details">
             <p><%= link_to product.name, product_path(product) %></p>
             <p><%= product.console %></p>
