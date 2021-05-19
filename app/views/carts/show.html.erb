@@ -30,6 +30,7 @@
             <img src="https://via.placeholder.com/110x130">
             <div>
                 <p><%= cart_item.product.name %></p>
+                <p><%= cart_item.product.console %></p>
                 <p>$<%= cart_item.product.price %></p>
                 <p><%= link_to "Delete Item", cart_item, method: :delete, data: { confirm: "Are you sure?" } %></p>
             </div>    

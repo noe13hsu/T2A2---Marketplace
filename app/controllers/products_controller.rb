@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update, :destroy]
-  
+  before_action :create_cart, only: [:index]
+
   def index
     product_arr = Product.all
     @first_half = product_arr.first(product_arr.length/2.round).sample(10)
@@ -48,6 +49,12 @@ class ProductsController < ApplicationController
   def correct_user
     @product = current_user.products.find_by(id: params[:id])
     redirect_to root_path, alert: "Not Authorised" if @product.nil?
+  end
+
+  def create_cart
+    if current_user.cart.nil?
+        Cart.create!(user_id: current_user.id)
+    end
   end
 
   def product_params
