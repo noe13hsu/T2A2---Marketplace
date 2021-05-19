@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
   def create
     @product = current_user.products.build(product_params)
     if @product.save
-      redirect_to your_products_path(current_user)
+      redirect_to user_products_path(current_user)
     else
       flash.now[:errors] = @product.errors.full_messages
       render action: 'new'
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to your_products_path(current_user)
+      redirect_to user_products_path(current_user)
     else
       flash.now[:errors] = @product.errors.full_messages
       render action: 'edit'
@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to your_products_path(current_user)
+    redirect_to user_products_path(current_user)
   end
 
   private

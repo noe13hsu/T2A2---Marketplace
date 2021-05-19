@@ -55,7 +55,7 @@
 <br>
 <h1>Your Games</h1>
 <% if @num_of_products > 0 %>
-    <p>You have listed <%=  link_to @num_of_products, your_products_path(@user) %> games</p>
+    <p>You have listed <%=  link_to @num_of_products, user_products_path(@user) %> games</p>
     <div class="swiper-container mySwiper">
         <div class="swiper-wrapper">
             <%= render partial: "products/swiper", locals: {products: @products} %>

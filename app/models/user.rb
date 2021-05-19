@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
 
   has_many :products, dependent: :destroy
+  has_one :cart, dependent: :destroy
      
   def full_name
     return "#{first_name} #{last_name}"

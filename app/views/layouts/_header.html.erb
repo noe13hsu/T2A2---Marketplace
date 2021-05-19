@@ -34,10 +34,10 @@
                         <%= link_to "Your Account", user_path(current_user), class:"nav-link active" %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to "Your Products", your_products_path(current_user), class:"nav-link active" %>
+                        <%= link_to "Your Products", user_products_path(current_user), class:"nav-link active" %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to "Your Cart", edit_user_registration_path, class:"nav-link active" %>
+                        <%= link_to "Your Cart", user_cart_path(current_user), class:"nav-link active" %>
                     </li>
                     <li class="nav-item">
                         <%= link_to "List Products", new_product_path, class:"nav-link active" %>

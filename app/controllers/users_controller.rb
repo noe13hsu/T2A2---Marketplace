@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :correct_user, only: [:update, :show, :destroy, :edit, :your_products]
+    before_action :correct_user, only: [:update, :show, :destroy, :edit, :products]
     
     def index
         
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
 
-    def your_products
+    def products
         @products = @user.products.order(:created_at).reverse
     end
 
