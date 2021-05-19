@@ -45,7 +45,6 @@ class ProductsController < ApplicationController
   end
 
   private
-
   def correct_user
     @product = current_user.products.find_by(id: params[:id])
     redirect_to root_path, alert: "Not Authorised" if @product.nil?
