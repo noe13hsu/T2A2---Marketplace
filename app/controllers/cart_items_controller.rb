@@ -12,6 +12,6 @@ class CartItemsController < ApplicationController
 
     def destroy
         current_user.cart.cart_items.find(params[:id]).destroy
-        redirect_to user_cart_path(current_user)
+        redirect_to show_user_cart_path
     end
 end

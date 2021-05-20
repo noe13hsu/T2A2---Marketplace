@@ -49,13 +49,13 @@
 <p>Mobile: <%= @user.mobile %></p>
 
 <%= link_to "Change Password", edit_user_registration_path, class: "btn btn-light border border-dark" %>
-<%= link_to "Update Details", edit_user_path(@user), class: "btn btn-light border border-dark" %>
-<%= link_to "Delete Account", @user, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-dark border border-dark" %>
+<%= link_to "Update Details", edit_user_details_path, class: "btn btn-light border border-dark" %>
+<%= link_to "Delete Account", delete_user_account_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-dark border border-dark" %>
 <br>
 <br>
 <h1>Your Games</h1>
 <% if @num_of_products > 0 %>
-    <p>You have listed <%=  link_to @num_of_products, user_products_path(@user) %> games</p>
+    <p>You have listed <%=  link_to @num_of_products, show_user_products_path %> games</p>
     <div class="swiper-container mySwiper">
         <div class="swiper-wrapper">
             <%= render partial: "products/swiper", locals: {products: @products} %>

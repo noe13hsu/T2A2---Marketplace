@@ -31,13 +31,13 @@
             <% if user_signed_in? %>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <%= link_to "Your Account", user_path(current_user), class:"nav-link active" %>
+                        <%= link_to "Your Account", show_user_details_path, class:"nav-link active" %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to "Your Products", user_products_path(current_user), class:"nav-link active" %>
+                        <%= link_to "Your Products", show_user_products_path, class:"nav-link active" %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to "Your Cart", user_cart_path(current_user), class:"nav-link active" %>
+                        <%= link_to "Your Cart", show_user_cart_path, class:"nav-link active" %>
                     </li>
                     <li class="nav-item">
                         <%= link_to "List Products", new_product_path, class:"nav-link active" %>

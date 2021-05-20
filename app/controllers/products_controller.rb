@@ -1,7 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :update, :destroy]
-  before_action :create_cart, only: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     product_arr = Product.all
@@ -33,7 +31,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to user_products_path(current_user)
+      redirect_to show_user_products_path
     else
       flash.now[:errors] = @product.errors.full_messages
       render action: 'edit'
@@ -42,21 +40,10 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to user_products_path(current_user)
+    redirect_to show_user_products_path
   end
 
   private
-  def correct_user
-    @product = current_user.products.find_by(id: params[:id])
-    redirect_to root_path, alert: "Not Authorised" if @product.nil?
-  end
-
-  def create_cart
-    if current_user.cart.nil?
-        Cart.create!(user_id: current_user.id)
-    end
-  end
-
   def product_params
     params.require(:product).permit(:name, :price, :condition, :console)
   end

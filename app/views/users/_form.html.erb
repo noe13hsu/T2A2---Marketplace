@@ -1,4 +1,4 @@
-<%= form_with model: @user, local: true do |f| %>
+<%= form_with model: @user, url: update_user_details_path, method: :patch do |f| %>
     <div class="mb-3">
         <%= f.label :first_name, class: "form-label" %>
         <%= f.text_field :first_name, class: "form-control border border-dark" %>
@@ -17,4 +17,4 @@
     </div>
     <%= link_to "Cancel", :back, class: "btn btn-dark border border-dark" %>
     <%= f.submit class: "btn btn-light border border-dark" %>
-<% end %>
+  <% end %>
