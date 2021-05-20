@@ -11,6 +11,9 @@ User.destroy_all
 noe = User.create!(first_name: "Noe", last_name: "Hsu", email: "noe@gmail.com", password: "111111", password_confirmation: "111111", location: "4109")
 jin = User.create!(first_name: "Jin", last_name: "Hsu", email: "jin@gmail.com", password: "111111", password_confirmation: "111111", location: "4109")
 
+Cart.create!(user_id: noe.id)
+Cart.create!(user_id: jin.id)
+
 
 noe.products.create(name: "Nioh", price: 5.0, condition: "used", console: "PS4")
 noe.products.create(name: "Monster Hunter: World", price: 10.0, condition: "used", console: "PS4")
