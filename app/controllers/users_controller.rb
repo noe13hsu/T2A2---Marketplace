@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 
     def products
         @products = current_user.products.order(:created_at).reverse
+        @num_of_items = @products.length
     end
 
     private

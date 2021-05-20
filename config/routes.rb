@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   post "user/cart/:id", to: "cart_items#create", as: "create_cart_item"
   delete "user/cart/:id", to: "cart_items#destroy", as: "delete_cart_item"
 
+  patch "products/:id/edit", to: "products#update", as: "update_product_details"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
