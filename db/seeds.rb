@@ -13,6 +13,7 @@ jin = User.create!(first_name: "Jin", last_name: "Hsu", email: "jin@gmail.com", 
 admin = User.create!(last_name: "Admin", email: "admin@gmail.com", password: "111111", password_confirmation: "111111", location: "4109")
 
 admin.add_role :admin
+jin.add_role :genuine
 
 Cart.create!(user_id: noe.id)
 Cart.create!(user_id: jin.id)

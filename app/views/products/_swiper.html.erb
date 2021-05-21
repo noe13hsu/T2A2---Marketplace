@@ -7,12 +7,21 @@
         height: 120px;
         padding: 0 5px 0 5px;
     }
+
+    .fake-img {
+        width: 110px;
+        height: 130px;
+    }
 </style>
 
 
 <% products.each do |product| %>
     <div class="swiper-slide">
-        <img src="https://via.placeholder.com/110x130">
+        <% if product.cover.attached? %>
+            <%= image_tag product.cover, width: 110, height: 130 %>
+        <% else %>
+            <div class="fake-img bg-dark"></div>
+        <% end %>
         <div class="product-details">
             <p><%= link_to product.name, product_path(product) %></p>
             <p><%= product.console %></p>

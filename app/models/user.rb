@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates_uniqueness_of :email
+  validates :last_name, :location, presence: true
 
   has_many :products, dependent: :destroy
   has_one :cart, dependent: :destroy
