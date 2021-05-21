@@ -2,9 +2,9 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    product_arr = Product.all
-    @first_half = product_arr.first(product_arr.length/2.round).sample(10)
-    @second_half = product_arr.last(product_arr.length/2.round).sample(10)
+      product_arr = Product.all
+      @first_half = product_arr.first(product_arr.length/2.round).shuffle
+      @second_half = product_arr.last(product_arr.length/2.round).shuffle
   end
 
   def show
@@ -13,10 +13,12 @@ class ProductsController < ApplicationController
 
   def new
     @product = current_user.products.build
+    authorize @product
   end
 
   def create
     @product = current_user.products.build(product_params)
+    authorize @product
     if @product.save
       redirect_to show_user_products_path
     else

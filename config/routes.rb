@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root to: "products#index"
 
+  get "admin", to: "users#admin", as: "admin"
   patch "user", to: "users#update", as: "update_user_details"
   put "user", to: "users#update"
   delete "user", to: "users#destroy", as: "delete_user_account"

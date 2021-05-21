@@ -3,16 +3,20 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }]),
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
 
 noe = User.create!(first_name: "Noe", last_name: "Hsu", email: "noe@gmail.com", password: "111111", password_confirmation: "111111", location: "4109")
 jin = User.create!(first_name: "Jin", last_name: "Hsu", email: "jin@gmail.com", password: "111111", password_confirmation: "111111", location: "4109")
+admin = User.create!(last_name: "Admin", email: "admin@gmail.com", password: "111111", password_confirmation: "111111", location: "4109")
+
+admin.add_role :admin
 
 Cart.create!(user_id: noe.id)
 Cart.create!(user_id: jin.id)
+Cart.create!(user_id: admin.id)
 
 
 noe.products.create(name: "Nioh", price: 5.0, condition: "used", console: "PS4")

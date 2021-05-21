@@ -6,5 +6,7 @@
 <p>Condition: <%= @product.condition %></p>
 <p>Location: <%= @product.user.location %></p>
 
-<%= link_to "Add to cart", create_cart_item_path, method: :post %>
+<% if current_user.present? %>
+    <%= link_to "Add to cart", create_cart_item_path, method: :post %>
+<% end %>
 <%= link_to "Back", :back %>
