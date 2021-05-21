@@ -1,12 +1,29 @@
-<h1><%= @product.name %></h1>
-
-<p>Seller: <%= @product.user.full_name %></p>
-<p>Price: $<%= @product.price.to_f %></p>
-<p>Console: <%= @product.console %></p>
-<p>Condition: <%= @product.condition %></p>
-<p>Location: <%= @product.user.location %></p>
-
-<% if current_user.present? %>
-    <%= link_to "Add to cart", create_cart_item_path, method: :post %>
-<% end %>
-<%= link_to "Back", :back %>
+<style>
+    .fake-img {
+        width: 280px;
+        height: 330px;
+    }
+</style>
+<div class="d-flex flex-row flex-wrap justify-content-center">
+    <div class="p-3">
+        <% if @product.cover.attached? %>
+            <%= image_tag @product.cover, width: 280, height: 330 %>
+        <% else %>
+            <div class="fake-img bg-dark"></div>
+        <% end %>
+    </div>
+    <div class="p-3">
+        <h1><%= @product.name %></h1>
+        <p>Seller: <%= @product.user.full_name %></p>
+        <p>Price: $<%= @product.price.to_f %></p>
+        <p>Console: <%= @product.console %></p>
+        <p>Condition: <%= @product.condition %></p>
+        <p>Location: <%= @product.user.location %></p>
+        <%= link_to "Back", :back, class: "btn btn-dark border border-dark" %>
+        <% if current_user.present? %>
+            <%= link_to "Add to cart", create_cart_item_path, method: :post, class: "btn btn-light border border-dark" %>
+        <% else %>
+            <p>Please <%= link_to "sign up", new_user_registration_path %>  or <%= link_to "log in", new_user_session_path %></p>
+        <% end %>
+    </div>
+</div>

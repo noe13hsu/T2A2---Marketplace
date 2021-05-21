@@ -14,7 +14,11 @@
  *= require_self
  */
 
- footer {
+body {
+    height: 100vh;
+}
+
+footer {
     font-size: 12px;
 }
 
