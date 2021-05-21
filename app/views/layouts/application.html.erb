@@ -47,19 +47,40 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>
-      var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 2,
-      spaceBetween: 15,
-      autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        dynamicBullets: true,
-        clickable: true,
-      },
-      });
+      function checkMediaQuery() {
+        if (window.innerWidth < 760) {
+          var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 2,
+            spaceBetween: 15,
+            pagination: {
+              el: ".swiper-pagination",
+              dynamicBullets: true,
+              clickable: true,
+            },
+          });
+        } else if (window.innerWidth > 760) {
+          var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 4,
+            spaceBetween: 15,
+            pagination: {
+              el: ".swiper-pagination",
+              dynamicBullets: true,
+              clickable: true,
+            },
+          });
+        } else if (window.innerWidth > 1020) {
+          var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 6,
+            spaceBetween: 15,
+            pagination: {
+              el: ".swiper-pagination",
+              dynamicBullets: true,
+              clickable: true,
+            },
+          });
+        }
+      }
+      window.addEventListener("resize", checkMediaQuery);
     </script>
   </body>
 </html>
