@@ -3,9 +3,15 @@ class ProductsController < ApplicationController
   before_action :this_product, only: [:destroy, :update, :edit]
 
   def index
+    if current_user.present?
+      product_arr = Product.all.select { |product| product[:user_id] != current_user.id }
+      @first_half = product_arr.first((product_arr.length.to_f/2).ceil).shuffle
+      @second_half = product_arr.last((product_arr.length.to_f/2).ceil).shuffle
+    else
       product_arr = Product.all
       @first_half = product_arr.first((product_arr.length.to_f/2).ceil).shuffle
       @second_half = product_arr.last((product_arr.length.to_f/2).ceil).shuffle
+    end
   end
 
   def show

@@ -29,6 +29,7 @@
 <% if @num_of_items == 0 %>
     <p>You have not listed any games</p>
 <% else %>
+    <p>You have listed <%= @num_of_items %> games</p>
     <% @products.each do |product| %>
         <div class="user-game-details border border-secondary">
             <% if product.cover.attached? %>
