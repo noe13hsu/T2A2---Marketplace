@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root to: "products#index"
 
+  get "search", to: "products#search_result", as: "search_result"
+
   get "ps4", to: "products#show_ps4", as: "show_ps4"
   get "ps5", to: "products#show_ps5", as: "show_ps5"
   get "switch", to: "products#show_switch", as: "show_switch"

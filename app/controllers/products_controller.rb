@@ -46,22 +46,22 @@ class ProductsController < ApplicationController
   end
 
   def show_ps4
-    @ps4_products = @products.select { |product| product.console.downcase == "ps4"}
+    @ps4_products = @products.select { |product| product.console.downcase == "playstation 4"}
     split_to_two_halves(@ps4_products)
   end
 
   def show_ps5
-    @ps5_products = @products.select { |product| product.console.downcase == "ps5"}
+    @ps5_products = @products.select { |product| product.console.downcase == "playstation 5"}
     split_to_two_halves(@ps5_products)
   end
 
   def show_switch
-    @switch_products = @products.select { |product| product.console.downcase == "switch"}
+    @switch_products = @products.select { |product| product.console.downcase == "nintendo switch"}
     split_to_two_halves(@switch_products)
   end
 
   def show_xboxxs
-    @xbox_products = @products.select { |product| product.console.downcase == "xbox"}
+    @xbox_products = @products.select { |product| product.console.downcase == "xbox x/s"}
     split_to_two_halves(@xbox_products)
   end
 
@@ -71,7 +71,7 @@ class ProductsController < ApplicationController
   end
 
   def show_other_consoles
-    major_consoles = ["ps4", "ps5", "switch", "xbox", "xbox one"]
+    major_consoles = ["playstation 4", "playstation 5", "nintendo switch", "xbox x/s", "xbox one"]
     @other_console_products = []
     @products.each do |product|
       if !major_consoles.include? product.console.downcase
@@ -81,9 +81,20 @@ class ProductsController < ApplicationController
     split_to_two_halves(@other_console_products)
   end
 
+  def search_result
+    search_result = []
+    Product.all.each do |product|
+      if product.name.include? params[:search]
+          search_result.push(product)
+      end
+    end
+    @products = search_result
+    split_to_two_halves(@products)
+  end
+
   private
   def product_params
-    params.require(:product).permit(:name, :price, :condition, :console, :cover)
+    params.require(:product).permit(:name, :price, :condition, :console, :cover, :search)
   end
 
   def this_product

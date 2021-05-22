@@ -24,28 +24,26 @@
     }
 </style>
 
-<div class="align-self-start">
-    <h1>Your Cart</h1>
+<h1>Your Cart</h1>
 
-    <% if @num_of_items == 0 %>
-        <p>Your cart is empty</p>
-    <% else %>
-        <p>There are <%= @num_of_items %> items in your cart</p>
-        <% @cart_items.each do |cart_item| %>
-            <div class="user-game-details border border-secondary">
-                <% if cart_item.product.cover.attached? %>
-                    <%= image_tag cart_item.product.cover, width: 110, height: 130 %>
-                <% else %>
-                    <div class="fake-img bg-dark"></div>
-                <% end %>
-                <div>
-                    <p><%= cart_item.product.name %></p>
-                    <p><%= cart_item.product.console %></p>
-                    <p>$<%= cart_item.product.price %></p>
-                    <p><%= link_to "Delete Item", delete_cart_item_path(cart_item), method: :delete, data: { confirm: "Are you sure?" } %></p>
-                </div>    
-            </div>
-        <% end %>
-        <h3>Subtotal: $<%= @subtotal %></h3>
+<% if @num_of_items == 0 %>
+    <p>Your cart is empty</p>
+<% else %>
+    <p>There are <%= @num_of_items %> items in your cart</p>
+    <% @cart_items.each do |cart_item| %>
+        <div class="user-game-details border border-secondary">
+            <% if cart_item.product.cover.attached? %>
+                <%= image_tag cart_item.product.cover, width: 110, height: 130 %>
+            <% else %>
+                <div class="fake-img bg-dark"></div>
+            <% end %>
+            <div>
+                <p><%= cart_item.product.name %></p>
+                <p><%= cart_item.product.console %></p>
+                <p>$<%= cart_item.product.price %></p>
+                <p><%= link_to "Delete Item", delete_cart_item_path(cart_item), method: :delete, data: { confirm: "Are you sure?" } %></p>
+            </div>    
+        </div>
     <% end %>
-</div>
+    <h3>Subtotal: $<%= @subtotal %></h3>
+<% end %>
