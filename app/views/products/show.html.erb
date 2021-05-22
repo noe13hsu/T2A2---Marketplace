@@ -20,9 +20,10 @@
         <p>Condition: <%= @product.condition %></p>
         <p>Location: <%= @product.user.location %></p>
         <%= link_to "Back", :back, class: "btn btn-dark border border-dark" %>
-        <% if current_user.present? %>
+        <% if current_user.present? and !current_user.products.include? @product %>
             <%= link_to "Add to cart", create_cart_item_path, method: :post, class: "btn btn-light border border-dark" %>
-        <% else %>
+        <% end %>
+        <% if !current_user.present? %>
             <p>Please <%= link_to "sign up", new_user_registration_path %>  or <%= link_to "log in", new_user_session_path %></p>
         <% end %>
     </div>
