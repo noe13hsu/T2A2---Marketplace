@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :this_product, only: [:destroy, :update, :edit]
+  before_action :current_user_product, only: [:destroy, :update, :edit]
   before_action :filter_out_current_user_products, only: [:index, :show_ps4, :show_ps5, :show_xboxxs, :show_xboxone, :show_switch, :show_other_consoles]
 
   def index
@@ -98,8 +98,11 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :price, :condition, :console, :cover, :search)
   end
 
-  def this_product
+  def current_user_product
     @product = current_user.products.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "Not authorised"
+    redirect_to root_path
   end
 
   def filter_out_current_user_products
