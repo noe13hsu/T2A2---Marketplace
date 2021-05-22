@@ -112,6 +112,6 @@ class ProductsController < ApplicationController
 
   def split_to_two_halves(arr)
     @first_half = arr.first((arr.length.to_f/2).ceil).shuffle
-    @second_half = arr.last((arr.length.to_f/2).ceil).shuffle
+    @second_half = arr.last((arr.length.to_f/2).floor).shuffle
   end
 end
