@@ -1,17 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :this_product, only: [:destroy, :update, :edit]
+  before_action :filter_out_current_user_products, only: [:index, :show_ps4, :show_ps5, :show_xboxxs, :show_xboxone, :show_switch, :show_other_consoles]
 
   def index
-    if current_user.present?
-      product_arr = Product.all.select { |product| product[:user_id] != current_user.id }
-      @first_half = product_arr.first((product_arr.length.to_f/2).ceil).shuffle
-      @second_half = product_arr.last((product_arr.length.to_f/2).ceil).shuffle
-    else
-      product_arr = Product.all
-      @first_half = product_arr.first((product_arr.length.to_f/2).ceil).shuffle
-      @second_half = product_arr.last((product_arr.length.to_f/2).ceil).shuffle
-    end
+    split_to_two_halves(@products)
   end
 
   def show
@@ -52,6 +45,42 @@ class ProductsController < ApplicationController
     redirect_to show_user_products_path
   end
 
+  def show_ps4
+    @ps4_products = @products.select { |product| product.console.downcase == "ps4"}
+    split_to_two_halves(@ps4_products)
+  end
+
+  def show_ps5
+    @ps5_products = @products.select { |product| product.console.downcase == "ps5"}
+    split_to_two_halves(@ps5_products)
+  end
+
+  def show_switch
+    @switch_products = @products.select { |product| product.console.downcase == "switch"}
+    split_to_two_halves(@switch_products)
+  end
+
+  def show_xboxxs
+    @xbox_products = @products.select { |product| product.console.downcase == "xbox"}
+    split_to_two_halves(@xbox_products)
+  end
+
+  def show_xboxone
+    @xboxone_products = @products.select { |product| product.console.downcase == "xbox one"}
+    split_to_two_halves(@xboxone_products)
+  end
+
+  def show_other_consoles
+    major_consoles = ["ps4", "ps5", "switch", "xbox", "xbox one"]
+    @other_console_products = []
+    @products.each do |product|
+      if !major_consoles.include? product.console.downcase
+        @other_console_products.push(product)
+      end
+    end
+    split_to_two_halves(@other_console_products)
+  end
+
   private
   def product_params
     params.require(:product).permit(:name, :price, :condition, :console, :cover)
@@ -59,5 +88,18 @@ class ProductsController < ApplicationController
 
   def this_product
     @product = current_user.products.find(params[:id])
+  end
+
+  def filter_out_current_user_products
+    if current_user.present?
+      @products = Product.all.select { |product| product[:user_id] != current_user.id }
+    else
+      @products = Product.all
+    end
+  end
+
+  def split_to_two_halves(arr)
+    @first_half = arr.first((arr.length.to_f/2).ceil).shuffle
+    @second_half = arr.last((arr.length.to_f/2).ceil).shuffle
   end
 end

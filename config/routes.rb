@@ -4,7 +4,15 @@ Rails.application.routes.draw do
 
   root to: "products#index"
 
+  get "ps4", to: "products#show_ps4", as: "show_ps4"
+  get "ps5", to: "products#show_ps5", as: "show_ps5"
+  get "switch", to: "products#show_switch", as: "show_switch"
+  get "xboxxs", to: "products#show_xboxxs", as: "show_xboxxs"
+  get "xboxone", to: "products#show_xboxone", as: "show_xboxone"
+  get "others", to: "products#show_other_consoles", as: "show_other_consoles"
+
   get "admin", to: "users#admin", as: "admin"
+
   patch "user", to: "users#update", as: "update_user_details"
   put "user", to: "users#update"
   delete "user", to: "users#destroy", as: "delete_user_account"
