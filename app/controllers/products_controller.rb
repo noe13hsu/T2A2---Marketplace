@@ -84,11 +84,12 @@ class ProductsController < ApplicationController
   def search_result
     search_result = []
     Product.all.each do |product|
-      if product.name.include? params[:search]
+      if product.name.downcase.include? params[:search].to_s.downcase
           search_result.push(product)
       end
     end
     @products = search_result
+    @num_of_items = @products.length
     split_to_two_halves(@products)
   end
 

@@ -45,40 +45,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-      function checkMediaQuery() {
-        if (window.innerWidth <= 425) {
-          var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 2,
-            spaceBetween: 15,
-            pagination: {
-              el: ".swiper-pagination",
-              dynamicBullets: true,
-              clickable: true,
-            },
-          });
-        } else if (window.innerWidth > 425 && window.innerWidth < 768 ) {
-          var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 4,
-            spaceBetween: 15,
-            pagination: {
-              el: ".swiper-pagination",
-              dynamicBullets: true,
-              clickable: true,
-            },
-          });
-        } else if (window.innerWidth >= 768) {
-          var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 6,
-            spaceBetween: 15,
-            pagination: {
-              el: ".swiper-pagination",
-              dynamicBullets: true,
-              clickable: true,
-            },
-          });
-        }
-      }
-      window.addEventListener("resize", checkMediaQuery);
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 8,
+        spaceBetween: 15,
+        pagination: {
+          el: ".swiper-pagination",
+          dynamicBullets: true,
+          clickable: true,
+        },
+      });
     </script>
   </body>
 </html>

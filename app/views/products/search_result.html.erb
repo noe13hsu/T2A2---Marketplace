@@ -1,3 +1,38 @@
-<h1>Search</h1>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+  }
 
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-wrapper {
+    margin-bottom: 15px;
+  }
+
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 14px;
+    background: #F2F2F2;
+    height: 34vh;
+
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    object-fit: cover;
+  }
+  </style>
+
+<h1>Search Results</h1>
+<p><%= @num_of_items %> games found</p>
 <%= render "products/product_display" %>
