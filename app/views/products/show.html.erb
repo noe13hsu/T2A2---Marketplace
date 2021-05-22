@@ -23,6 +23,9 @@
         <% if current_user.present? and !current_user.products.include? @product %>
             <%= link_to "Add to cart", create_cart_item_path, method: :post, class: "btn btn-light border border-dark" %>
         <% end %>
+        <% if current_user.products.include? @product %>
+            <%= link_to "Update Product", update_product_details_path(@product), class: "btn btn-light border border-dark" %>
+        <% end %>
         <% if !current_user.present? %>
             <p>Please <%= link_to "sign up", new_user_registration_path %>  or <%= link_to "log in", new_user_session_path %></p>
         <% end %>
