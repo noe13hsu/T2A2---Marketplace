@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  resources :products
 
   root to: "products#index"
 
-  get "search", to: "products#search_result", as: "search_result"
+  get "search", to: "products#search_by_name", as: "search_result"
 
   get "ps4", to: "products#show_ps4", as: "show_ps4"
   get "ps5", to: "products#show_ps5", as: "show_ps5"
@@ -30,5 +29,6 @@ Rails.application.routes.draw do
 
   patch "products/:id/edit", to: "products#update", as: "update_product_details"
 
+  resources :products
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

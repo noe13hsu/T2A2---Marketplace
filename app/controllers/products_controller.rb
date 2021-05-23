@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :current_user_product, only: [:destroy, :update, :edit]
-  before_action :filter_out_current_user_products, only: [:index, :show_ps4, :show_ps5, :show_xboxxs, :show_xboxone, :show_switch, :show_other_consoles]
+  before_action :filter_out_current_user_products, only: [:index, :show_ps4, :show_ps5, :show_xboxxs, :show_xboxone, :show_switch, :show_other_consoles, :search_by_name]
 
   def index
     split_to_two_halves(@products)
@@ -9,6 +9,21 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.all.find(params[:id])
+    @products_with_same_name = []
+    if current_user
+      Product.all.each do |product|
+        if product.name == @product.name and product != @product and !current_user.products.include? product
+          @products_with_same_name.push(product)
+        end
+      end
+    else
+      Product.all.each do |product|
+        if product.name == @product.name and product != @product
+          @products_with_same_name.push(product)
+        end
+      end
+    end
+    @products_with_same_name_num = @products_with_same_name.length
   end
 
   def new
@@ -81,16 +96,15 @@ class ProductsController < ApplicationController
     split_to_two_halves(@other_console_products)
   end
 
-  def search_result
-    search_result = []
-    Product.all.each do |product|
+  def search_by_name
+    @search_result = []
+    @products.each do |product|
       if product.name.downcase.include? params[:search].to_s.downcase
-          search_result.push(product)
+          @search_result.push(product)
       end
     end
-    @products = search_result
-    @num_of_items = @products.length
-    split_to_two_halves(@products)
+    @num_of_items = @search_result.length
+    split_to_two_halves(@search_result)
   end
 
   private
