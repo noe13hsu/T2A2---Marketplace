@@ -64,3 +64,7 @@ gem "pundit", "~> 2.1"
 gem "cloudinary", "~> 1.20"
 
 gem "activestorage-cloudinary-service", "~> 0.2.3"
+
+gem "chartkick", "~> 4.0"
+
+gem "groupdate", "~> 5.2"

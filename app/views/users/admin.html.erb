@@ -1,1 +1,9 @@
 <h1>Admin Dashboard</h1>
+<h3>Users</h3>
+    <p>Total of <%= @num_of_users %> users</p>
+    <%= line_chart @users.group_by_day(:created_at).count, colors: ["#1C2833", "#1C2833"], xtitle: "Date", ytitle: "# of Users" %>
+<br>
+<h3>Games</h3>
+    <p>Total of <%= @num_of_products %> games</p>
+    <%= bar_chart @products.group(:console).count, colors: ["#1C2833"] %>
+<br>
