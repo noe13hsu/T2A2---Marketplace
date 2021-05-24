@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   root to: "products#index"
 
+  post "user/orders/:id", to: "orders#create", as: "create_order"
+  get "user/orders", to: "orders#show", as: "show_order"
+
   get "search", to: "products#search_by_name", as: "search_result"
 
   get "ps4", to: "products#show_ps4", as: "show_ps4"

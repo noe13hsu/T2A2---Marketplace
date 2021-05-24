@@ -1,0 +1,50 @@
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+    }
+    
+    .user-game-details {
+        display: flex;
+        margin-bottom: 10px;
+        background: white;
+        padding :10px;
+    }
+
+    p {
+        margin: 0;
+        margin-left: 10px;
+    }
+
+    .fake-img {
+        width: 110px;
+        height: 130px;
+    }
+</style>
+
+<main>
+    <h1>Order History</h1>
+
+    <% @orders.each do |order| %>
+        <div class="d-flex flex-column user-game-details border border-secondary">
+            <h5>Order placed on <%= order.created_at %></h5>
+            <% order.order_items.each do |item| %>
+                <div class="d-flex flex-row mt-2">
+                    <% if item.product.cover.attached? %>
+                        <%= image_tag cart_item.product.cover, width: 110, height: 130 %>
+                    <% else %>
+                        <div class="fake-img bg-dark"></div>
+                    <% end %>
+                    <div>
+                        <p><strong><%= item.product.name %></strong></p>
+                        <p><%= item.product.console %></p>
+                        <p>$<%= item.product.price %></p>
+                    </div>
+                </div>
+            <% end %>
+            <h5 class="mt-2">Total: $<%= order.total_amount %></h5>
+        </div>
+    <% end %>
+</main>

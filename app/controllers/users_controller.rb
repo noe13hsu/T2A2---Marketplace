@@ -37,9 +37,9 @@ class UsersController < ApplicationController
   def admin
     if is_admin?
       @users = User.all
-      @products = Product.all
       @num_of_users = @users.length
-      @num_of_products = @products.length
+      @num_of_available_products = Product.all.select { |product| product.available }.length
+      @num_of_sold_products = Product.all.select { |product| !product.available }.length
     else
       flash.alert = "Not authorised"
       redirect_to root_path

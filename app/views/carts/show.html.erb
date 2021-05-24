@@ -46,4 +46,5 @@
         </div>
     <% end %>
     <h3>Subtotal: $<%= @subtotal %></h3>
+    <%= link_to "Place Order", create_order_path(:id), method: :post, data: { confirm: "Are you sure?" }, class: "btn btn-light border border-dark" %>
 <% end %>

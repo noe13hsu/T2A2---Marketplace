@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :last_name, :location, presence: true
 
   has_many :products, dependent: :destroy
+  has_many :orders, dependent: :destroy
   has_one :cart, dependent: :destroy
      
   def full_name
