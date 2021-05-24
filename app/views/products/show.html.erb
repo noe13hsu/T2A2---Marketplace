@@ -43,43 +43,45 @@
     }
 </style>
 
-<div class="d-flex flex-row flex-wrap justify-content-center">
-    <div class="p-3">
-        <% if @product.cover.attached? %>
-            <%= image_tag @product.cover, width: 280, height: 330 %>
-        <% else %>
-            <div class="fake-img-lg bg-dark"></div>
-        <% end %>
-    </div>
-    <div class="p-3">
-        <h1><%= @product.name %></h1>
-        <p>Seller: <%= @product.user.full_name %></p>
-        <p>Price: $<%= @product.price.to_f %></p>
-        <p>Console: <%= @product.console %></p>
-        <p>Condition: <%= @product.condition %></p>
-        <p>Location: <%= @product.user.location %></p>
-        <%= link_to "Back to Home", root_path, class: "btn btn-dark border border-dark" %>
-        <% if current_user.present? and !current_user.products.include? @product %>
-            <%= link_to "Add to Cart", create_cart_item_path, method: :post, class: "btn btn-light border border-dark" %>
-        <% end %>
-        <% if current_user.present? and current_user.products.include? @product %>
-            <%= link_to "Update Item", update_product_details_path(@product), class: "btn btn-light border border-dark" %>
-        <% end %>
-        <% if !current_user.present? %>
-            <p>Please <%= link_to "sign up", new_user_registration_path %>  or <%= link_to "log in", new_user_session_path %></p>
-        <% end %>
-    </div>
-</div>
-<br>
-<% if @products_with_same_name_num > 0 %>
-    <h5>Games with the same title</h5>
-    <div class="swiper-container mySwiper">
-        <div class="swiper-wrapper">
-            <%= render partial: "products/swiper", locals: {products: @products_with_same_name} %>
+<main>
+    <div class="d-flex flex-row flex-wrap justify-content-center">
+        <div class="p-3">
+            <% if @product.cover.attached? %>
+                <%= image_tag @product.cover, width: 280, height: 330 %>
+            <% else %>
+                <div class="fake-img-lg bg-dark"></div>
+            <% end %>
         </div>
-        <div class="swiper-pagination"></div>
+        <div class="p-3">
+            <h1><%= @product.name %></h1>
+            <p>Seller: <%= @product.user.full_name %></p>
+            <p>Price: $<%= @product.price.to_f %></p>
+            <p>Console: <%= @product.console %></p>
+            <p>Condition: <%= @product.condition %></p>
+            <p>Location: <%= @product.user.location %></p>
+            <%= link_to "Back to Home", root_path, class: "btn btn-dark border border-dark" %>
+            <% if current_user.present? and !current_user.products.include? @product %>
+                <%= link_to "Add to Cart", create_cart_item_path, method: :post, class: "btn btn-light border border-dark" %>
+            <% end %>
+            <% if current_user.present? and current_user.products.include? @product %>
+                <%= link_to "Update Item", update_product_details_path(@product), class: "btn btn-light border border-dark" %>
+            <% end %>
+            <% if !current_user.present? %>
+                <p>Please <%= link_to "sign up", new_user_registration_path %>  or <%= link_to "log in", new_user_session_path %></p>
+            <% end %>
+        </div>
     </div>
-<% end %>
+    <br>
+    <% if @products_with_same_name_num > 0 %>
+        <h5>Games with the same title</h5>
+        <div class="swiper-container mySwiper">
+            <div class="swiper-wrapper">
+                <%= render partial: "products/swiper", locals: {products: @products_with_same_name} %>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    <% end %>
+</main>
 
 
 

@@ -26,7 +26,6 @@
 
 <main>
     <h1>Order History</h1>
-
     <% @orders.each do |order| %>
         <div class="d-flex flex-column user-game-details border border-secondary">
             <h5>Order placed on <%= order.created_at %></h5>

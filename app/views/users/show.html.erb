@@ -39,33 +39,67 @@
 
   p {
       margin-bottom: 5px;
+      margin-left: 10px;
   }
 
   .btn-width {
     width: 200px;
   }
+
+  .user-game-details {
+    display: flex;
+    margin-bottom: 10px;
+    background: white;
+    padding :10px;
+  }
 </style>
-<h1>Your Details</h1>
+<main>
+  <section>
+    <h1>Your Details</h1>
+    <p>Name: <%= @user.full_name %></p>
+    <p>Location: <%= @user.location %></p>
+    <p>Email: <%= @user.email %></p>
+    <p>Mobile: <%= @user.mobile %></p>
 
-<p>Name: <%= @user.full_name %></p>
-<p>Location: <%= @user.location %></p>
-<p>Email: <%= @user.email %></p>
-<p>Mobile: <%= @user.mobile %></p>
-
-<%= link_to "Change Password", edit_user_registration_path, class: "btn btn-light border border-dark mt-1 btn-width" %>
-<%= link_to "Update Details", edit_user_details_path, class: "btn btn-light border border-dark mt-1 btn-width" %>
-<%= link_to "Delete Account", delete_user_account_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-dark border border-dark mt-1 btn-width" %>
-<br>
-<h1>Your Games</h1>
-<% if @num_of_products > 0 %>
-    <p>You have listed <%=  link_to @num_of_products, show_user_products_path %> games</p>
-    <div class="swiper-container mySwiper">
-        <div class="swiper-wrapper">
-            <%= render partial: "products/swiper", locals: {products: @products} %>
+    <%= link_to "Change Password", edit_user_registration_path, class: "btn btn-light border border-dark mt-1 btn-width mb-3" %>
+    <%= link_to "Update Details", edit_user_details_path, class: "btn btn-light border border-dark mt-1 btn-width mb-3" %>
+    <%= link_to "Delete Account", delete_user_account_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-dark border border-dark mt-1 btn-width mb-3" %>
+    </section>
+  <section>
+    <h1>Your Games</h1>
+    <% if @num_of_products > 0 %>
+        <p>You have listed <%=  link_to @num_of_products, show_user_products_path %> games</p>
+        <div class="swiper-container mySwiper">
+            <div class="swiper-wrapper">
+                <%= render partial: "products/swiper", locals: {products: @products} %>
+            </div>
+            <div class="swiper-pagination"></div>
         </div>
-        <div class="swiper-pagination"></div>
-    </div>
-<% else %>
-  <p>You have not listed any games</p>
-<% end %>
+    <% else %>
+      <p>You have not listed any games</p>
+    <% end %>
+  </section>
+  <section>
+    <h1>Games Sold</h1>
+    <% if @num_of_sold_products == 0 %>
+      <p>You have not sold any games yet</p>
+    <% else %>
+      <p>You have sold <%= @num_of_sold_products %> games</p>
+      <% @sold_products.each do |product| %>
+        <div class="user-game-details border border-secondary">
+          <% if product.cover.attached? %>
+            <%= image_tag cart_item.product.cover, width: 110, height: 130 %>
+          <% else %>
+            <div class="fake-img bg-dark"></div>
+          <% end %>
+          <div>
+            <p><strong><%= product.name %></strong></p>
+            <p><%= product.console %></p>
+            <p>$<%= product.price %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </section>
+</main>
 

@@ -7,8 +7,10 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @products = current_user.products
+    @products = current_user.products.select { |product| product.available }
     @num_of_products = @products.length
+    @sold_products = current_user.products.select { |product| !product.available }
+    @num_of_sold_products = @sold_products.length
   end
 
   def edit
@@ -30,7 +32,8 @@ class UsersController < ApplicationController
   end
 
   def products
-    @products = current_user.products.order(:created_at).reverse
+    available_products = current_user.products.select { |product| product.available}
+    @products = available_products.reverse
     @num_of_items = @products.length
   end
 

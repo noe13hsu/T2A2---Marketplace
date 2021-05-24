@@ -23,27 +23,27 @@
         height: 130px;
     }
 </style>
-
-<h1>Your Games</h1>
-
-<% if @num_of_items == 0 %>
-    <p>You have not listed any games</p>
-<% else %>
-    <p>You have listed <%= @num_of_items %> games</p>
-    <% @products.each do |product| %>
-        <div class="user-game-details border border-secondary">
-            <% if product.cover.attached? %>
-                <%= image_tag product.cover, width: 110, height: 130 %>
-            <% else %>
-                <div class="fake-img bg-dark"></div>
-            <% end %>
-            <div>
-                <p><%= product.name %></p>
-                <p><%= product.console %></p>
-                <p>$<%= product.price %></p>
-                <p><%= link_to "Update Item", edit_product_path(product) %></p>
-                <p><%= link_to "Delete Item", product, method: :delete, data: { confirm: "Are you sure?" } %></p>
-            </div>    
-        </div>
+<main>
+    <h1>Your Games</h1>
+    <% if @num_of_items == 0 %>
+        <p>You have no games on sale</p>
+    <% else %>
+        <p>You have <%= @num_of_items %> games on sale</p>
+        <% @products.each do |product| %>
+            <div class="user-game-details border border-secondary">
+                <% if product.cover.attached? %>
+                    <%= image_tag product.cover, width: 110, height: 130 %>
+                <% else %>
+                    <div class="fake-img bg-dark"></div>
+                <% end %>
+                <div>
+                    <p><%= product.name %></p>
+                    <p><%= product.console %></p>
+                    <p>$<%= product.price %></p>
+                    <p><%= link_to "Update Item", edit_product_path(product) %></p>
+                    <p><%= link_to "Delete Item", product, method: :delete, data: { confirm: "Are you sure?" } %></p>
+                </div>    
+            </div>
+        <% end %>
     <% end %>
-<% end %>
+</main>
