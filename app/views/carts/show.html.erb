@@ -1,29 +1,3 @@
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100vh;
-    }
-    
-    .user-game-details {
-        display: flex;
-        margin-bottom: 10px;
-        background: white;
-        padding :10px;
-    }
-
-    p {
-        margin: 0;
-        margin-left: 10px;
-    }
-
-    .fake-img {
-        width: 110px;
-        height: 130px;
-    }
-</style>
-
 <main>
     <h1>Your Cart</h1>
     <% if @num_of_items == 0 %>
@@ -31,21 +5,22 @@
     <% else %>
         <p>There are <%= @num_of_items %> items in your cart</p>
         <% @cart_items.each do |cart_item| %>
-            <div class="user-game-details border border-secondary">
+            <div class="d-flex border border-secondary m-2 p-2">
                 <% if cart_item.product.cover.attached? %>
                     <%= image_tag cart_item.product.cover, width: 110, height: 130 %>
                 <% else %>
-                    <div class="fake-img bg-dark"></div>
+                    <%= image_tag src="https://via.placeholder.com/110x130" %>
                 <% end %>
-                <div>
-                    <p><%= cart_item.product.name %></p>
-                    <p><%= cart_item.product.console %></p>
-                    <p>$<%= cart_item.product.price %></p>
-                    <p><%= link_to "Delete Item", delete_cart_item_path(cart_item), method: :delete, data: { confirm: "Are you sure?" } %></p>
+                <div class="ms-2">
+                    <p class="mb-0"><%= cart_item.product.name %></p>
+                    <p class="mb-0"><%= cart_item.product.console %></p>
+                    <p class="mb-0">$<%= cart_item.product.price %></p>
+                    <br>
+                    <p class="mb-0"><%= link_to "Delete Item", delete_cart_item_path(cart_item), method: :delete, data: { confirm: "Are you sure?" } %></p>
                 </div>    
             </div>
         <% end %>
         <h3>Subtotal: $<%= @subtotal %></h3>
-        <%= link_to "Place Order", create_order_path(:id), method: :post, data: { confirm: "Are you sure?" }, class: "btn btn-light border border-dark" %>
+        <%= link_to "Place Order", create_order_path(:id), method: :post, data: { confirm: "Are you sure?" }, class: "btn btn-light border border-dark btn-width" %>
     <% end %>
 </main>

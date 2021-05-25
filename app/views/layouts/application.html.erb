@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'product', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     
 
@@ -47,11 +47,24 @@
     <script>
       var swiper = new Swiper(".mySwiper", {
         slidesPerView: 2,
-        spaceBetween: 15,
+        spaceBetween: 10,
         pagination: {
           el: ".swiper-pagination",
-          dynamicBullets: true,
           clickable: true,
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 15,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 6,
+            spaceBetween: 20,
+          },
         },
       });
     </script>
