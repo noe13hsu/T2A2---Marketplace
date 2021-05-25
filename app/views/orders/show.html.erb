@@ -1,23 +1,27 @@
 <main>
     <h1 class="mt-2">Order History</h1>
-    <% @orders.each do |order| %>
-        <div class="d-flex flex-column border border-secondary m-2 p-2">
-            <h5>Order placed on <%= order.created_at.to_date %></h5>
-            <% order.order_items.each do |item| %>
-                <div class="d-flex flex-row mt-2">
-                    <% if item.product.cover.attached? %>
-                        <%= image_tag cart_item.product.cover, width: 110, height: 130 %>
-                    <% else %>
-                        <%= image_tag src="https://via.placeholder.com/110x130" %>
-                    <% end %>
-                    <div class="ms-2">
-                        <p class="mb-0"><strong><%= item.product.name %></strong></p>
-                        <p class="mb-0"><%= item.product.console %></p>
-                        <p class="mb-0">$<%= "%.2f" % item.product.price %></p>
+    <% if @num_of_orders == 0 %>
+        <p>You have not placed any orders yet</p>
+    <% else %>
+        <% @orders.each do |order| %>
+            <div class="d-flex flex-column border border-secondary m-2 p-2">
+                <h5>Order placed on <%= order.created_at.to_date %></h5>
+                <% order.order_items.each do |item| %>
+                    <div class="d-flex flex-row mt-2">
+                        <% if item.product.cover.attached? %>
+                            <%= image_tag cart_item.product.cover, width: 110, height: 130 %>
+                        <% else %>
+                            <%= image_tag src="https://via.placeholder.com/110x130" %>
+                        <% end %>
+                        <div class="ms-2">
+                            <p class="mb-0"><strong><%= item.product.name %></strong></p>
+                            <p class="mb-0"><%= item.product.console %></p>
+                            <p class="mb-0">$<%= "%.2f" % item.product.price %></p>
+                        </div>
                     </div>
-                </div>
-            <% end %>
-            <h5 class="mt-2">Total: $<%= "%.2f" % order.total_amount %></h5>
-        </div>
+                <% end %>
+                <h5 class="mt-2">Total: $<%= "%.2f" % order.total_amount %></h5>
+            </div>
+        <% end %>
     <% end %>
 </main>

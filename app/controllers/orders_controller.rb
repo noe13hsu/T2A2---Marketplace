@@ -23,5 +23,6 @@ class OrdersController < ApplicationController
 
     def show
         @orders = current_user.orders.reverse
+        @num_of_orders = @orders.length
     end
 end

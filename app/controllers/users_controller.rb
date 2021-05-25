@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
+      flash.notice = "User updated"
       redirect_to user_path
     else
       flash.now[:errors] = current_user.errors.full_messages
@@ -28,6 +29,7 @@ class UsersController < ApplicationController
 
   def destroy
     current_user.destroy
+    flash.notice = "User deleted"
     redirect_to root_path
   end
 
@@ -45,7 +47,7 @@ class UsersController < ApplicationController
       @num_of_available_products = Product.all.select { |product| product.available }.length
       @num_of_sold_products = Product.all.select { |product| !product.available }.length
     else
-      flash.alert = "Not authorised"
+      flash.alert = "Unauthorised action"
       redirect_to root_path
     end
   end

@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
       end
       @products_with_same_name_num = @products_with_same_name.length
     else
-      flash.alert = "Product not found"
+      flash.alert = "Item not found"
       redirect_to root_path
     end
   end
@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
     @product.available = true
     authorize @product
     if @product.save
+      flash.notice = "Item created"
       redirect_to show_user_products_path
     else
       flash.now[:errors] = @product.errors.full_messages
@@ -50,7 +51,7 @@ class ProductsController < ApplicationController
 
   def edit
     if !@product.available
-      flash.alert = "Product not found"
+      flash.alert = "Item not found"
       redirect_to root_path
     end
   end
@@ -58,13 +59,14 @@ class ProductsController < ApplicationController
   def update
     if @product.available
       if @product.update(product_params)
+        flash.notice = "Item updated"
         redirect_to show_user_products_path
       else
         flash.now[:errors] = @product.errors.full_messages
         render action: "edit"
       end
     else
-      flash.alert = "Product not found"
+      flash.alert = "Item not found"
       redirect_to root_path
     end
   end
@@ -72,9 +74,10 @@ class ProductsController < ApplicationController
   def destroy
     if @product.available
       @product.destroy
+      flash.notice = "Item deleted"
       redirect_to show_user_products_path
     else
-      flash.alert = "Product not found"
+      flash.alert = "Item not found"
       redirect_to root_path
     end
   end
@@ -134,7 +137,7 @@ class ProductsController < ApplicationController
   def current_user_product
     @product = current_user.products.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "Not authorised"
+    flash[:alert] = "Unauthorised action"
     redirect_to root_path
   end
 
