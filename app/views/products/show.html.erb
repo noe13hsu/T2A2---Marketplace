@@ -14,7 +14,7 @@
             <p>Console: <%= @product.console %></p>
             <p>Condition: <%= @product.condition %></p>
             <p>Location: <%= @product.user.location %></p>
-            <%= link_to "Back to Home", root_path, class: "btn btn-dark border border-dark" %>
+            <%= link_to "Back", :back , class: "btn btn-dark border border-dark" %>
             <% if current_user.present? and !current_user.products.include? @product %>
                 <%= link_to "Add to Cart", create_cart_item_path, method: :post, class: "btn btn-light border border-dark" %>
             <% end %>
