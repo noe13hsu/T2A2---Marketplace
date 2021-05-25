@@ -68,3 +68,5 @@ gem "activestorage-cloudinary-service", "~> 0.2.3"
 gem "chartkick", "~> 4.0"
 
 gem "groupdate", "~> 5.2"
+
+gem "stripe", "~> 5.33"
