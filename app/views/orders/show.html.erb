@@ -1,8 +1,8 @@
 <main>
-    <h1>Order History</h1>
+    <h1 class="mt-2">Order History</h1>
     <% @orders.each do |order| %>
         <div class="d-flex flex-column border border-secondary m-2 p-2">
-            <h5>Order placed on <%= order.created_at %></h5>
+            <h5>Order placed on <%= order.created_at.to_date %></h5>
             <% order.order_items.each do |item| %>
                 <div class="d-flex flex-row mt-2">
                     <% if item.product.cover.attached? %>
