@@ -4,7 +4,7 @@ class CartsController < ApplicationController
         @num_of_items = @cart_items.length
         @subtotal = 0
         current_user.cart.cart_items.each do |cart_item|
-            @subtotal += cart_item.product.price.to_f.round(2)
+            @subtotal += cart_item.product.price.to_f
         end
     end
 end

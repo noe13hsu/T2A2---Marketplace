@@ -9,6 +9,6 @@ class Order < ApplicationRecord
     order_items.each do |item|
       total_amount += item.product.price.to_f
     end
-    return total_amount.round(2)
+    return total_amount
   end
 end

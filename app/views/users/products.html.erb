@@ -14,7 +14,7 @@
                 <div class="ms-2">
                     <p class="mb-0"><strong><%= product.name %></strong></p>
                     <p class="mb-0"><%= product.console %></p>
-                    <p class="mb-0">$<%= product.price %></p>
+                    <p class="mb-0">$<%= "%.2f" % product.price %></p>
                     <br>
                     <p class="mb-0"><%= link_to "Update Item", edit_product_path(product) %></p>
                     <p class="mb-0"><%= link_to "Delete Item", product, method: :delete, data: { confirm: "Are you sure?" } %></p>

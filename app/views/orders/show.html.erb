@@ -13,11 +13,11 @@
                     <div class="ms-2">
                         <p class="mb-0"><strong><%= item.product.name %></strong></p>
                         <p class="mb-0"><%= item.product.console %></p>
-                        <p class="mb-0">$<%= item.product.price %></p>
+                        <p class="mb-0">$<%= "%.2f" % item.product.price %></p>
                     </div>
                 </div>
             <% end %>
-            <h5 class="mt-2">Total: $<%= order.total_amount %></h5>
+            <h5 class="mt-2">Total: $<%= "%.2f" % order.total_amount %></h5>
         </div>
     <% end %>
 </main>

@@ -11,7 +11,7 @@
         <div>
             <p class="mb-0 ps-2 pe-2 text-center"><%= link_to product.name, product_path(product) %></p>
             <p class="mb-0 ps-2 pe-2 text-center"><%= product.console %></p>
-            <p class="mb-0 ps-2 pe-2 text-center">$<%= product.price %></p>
+            <p class="mb-0 ps-2 pe-2 text-center">$<%= "%.2f" % product.price %></p>
         </div>
     </div>
 <% end %>

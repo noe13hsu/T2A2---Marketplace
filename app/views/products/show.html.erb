@@ -10,7 +10,7 @@
         <div class="p-3">
             <h1><%= @product.name %></h1>
             <p>Seller: <%= @product.user.full_name %></p>
-            <p>Price: $<%= @product.price.to_f %></p>
+            <p>Price: $<%= "%.2f" % @product.price %></p>
             <p>Console: <%= @product.console %></p>
             <p>Condition: <%= @product.condition %></p>
             <p>Location: <%= @product.user.location %></p>

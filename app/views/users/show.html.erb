@@ -40,7 +40,7 @@
           <div class="ms-2">
             <p class="mb-0"><strong><%= product.name %></strong></p>
             <p class="mb-0"><%= product.console %></p>
-            <p class="mb-0">$<%= product.price %></p>
+            <p class="mb-0">$<%= "%.2f" % product.price %></p>
           </div>
         </div>
       <% end %>
