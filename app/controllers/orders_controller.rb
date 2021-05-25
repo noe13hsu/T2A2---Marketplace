@@ -12,6 +12,6 @@ class OrdersController < ApplicationController
     end
 
     def show
-        @orders = current_user.orders
+        @orders = current_user.orders.reverse
     end
 end
