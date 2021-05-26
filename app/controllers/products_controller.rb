@@ -119,14 +119,18 @@ class ProductsController < ApplicationController
   end
 
   def search_by_name
-    @search_result = []
-    @products.each do |product|
-      if product.name.downcase.include? params[:search].to_s.downcase 
-          @search_result.push(product)
+    if params[:search] != ""
+      @search_result = []
+      @products.each do |product|
+        if product.name.downcase.include? params[:search].to_s.downcase 
+            @search_result.push(product)
+        end
       end
+      @num_of_items = @search_result.length
+      split_to_two_halves(@search_result)
+    else
+      redirect_to root_path
     end
-    @num_of_items = @search_result.length
-    split_to_two_halves(@search_result)
   end
 
   private
