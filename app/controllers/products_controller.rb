@@ -128,6 +128,7 @@ class ProductsController < ApplicationController
       end
       @num_of_items = @search_result.length
       split_to_two_halves(@search_result)
+      @search = params[:search]
     else
       redirect_to root_path
     end

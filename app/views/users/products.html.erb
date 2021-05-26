@@ -3,7 +3,11 @@
     <% if @num_of_items == 0 %>
         <p>You have no games on sale</p>
     <% else %>
-        <p>You have <%= @num_of_items %> games on sale</p>
+        <% if @num_of_items == 1 %>
+            <p>You have 1 game on sale</p>
+        <% else %>
+            <p>You have <%= @num_of_items %> games on sale</p>
+        <% end %>
         <% @products.each do |product| %>
             <div class="d-flex border border-secondary m-2 p-2">
                 <% if product.cover.attached? %>

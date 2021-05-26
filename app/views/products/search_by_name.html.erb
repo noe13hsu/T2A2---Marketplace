@@ -1,6 +1,12 @@
 <%= render partial: "products/console_filter" %>
 <h1 class="mt-2">Search Results</h1>
-<p><%= @num_of_items %> games found</p>
+<% if @num_of_items == 0 %>
+    <p>No results for <%= @search %></p>
+<% elsif @num_of_items == 1 %>
+    <p>1 game found</p>
+<% else %>
+    <p><%= @num_of_items %> games found</p>
+<% end %>
 <% if @num_of_items > 0 %>
     <%= render partial: "products/product_display" %>
 <% end %>

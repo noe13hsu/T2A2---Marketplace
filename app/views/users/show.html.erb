@@ -13,13 +13,17 @@
   <section>
     <h1>Your Games</h1>
     <% if @num_of_products > 0 %>
+      <% if @num_of_products == 1 %>
+        <p>You have listed <%=  link_to @num_of_products, show_user_products_path %> game</p>
+      <% else %>
         <p>You have listed <%=  link_to @num_of_products, show_user_products_path %> games</p>
-        <div class="swiper-container mySwiper">
-            <div class="swiper-wrapper mb-3 text-center">
-                <%= render partial: "products/swiper", locals: {products: @products} %>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
+      <% end %>
+      <div class="swiper-container mySwiper">
+          <div class="swiper-wrapper mb-3 text-center">
+              <%= render partial: "products/swiper", locals: {products: @products} %>
+          </div>
+          <div class="swiper-pagination"></div>
+      </div>
     <% else %>
       <p>You have not listed any games</p>
     <% end %>
@@ -29,7 +33,11 @@
     <% if @num_of_sold_products == 0 %>
       <p>You have not sold any games yet</p>
     <% else %>
-      <p>You have sold <%= @num_of_sold_products %> games</p>
+      <% if @num_of_sold_products == 1 %>
+        <p>You have sold 1 game</p>
+      <% else %>
+        <p>You have sold <%= @num_of_sold_products %> games</p>
+      <% end %>
       <% @sold_products.each do |product| %>
         <div class="d-flex border border-secondary m-2 p-2">
           <% if product.cover.attached? %>
