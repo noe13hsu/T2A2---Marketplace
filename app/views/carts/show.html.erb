@@ -11,7 +11,7 @@
         <% @cart_items.each do |cart_item| %>
             <div class="d-flex border border-secondary m-2 p-2">
                 <% if cart_item.product.cover.attached? %>
-                    <%= image_tag cart_item.product.cover, width: 110, height: 130 %>
+                    <%= cl_image_tag cart_item.product.cover.key, crop: :scale, width: 110, height: 145, cloud_name: "noe13hsu" %>
                 <% else %>
                     <%= image_tag src="https://via.placeholder.com/110x130" %>
                 <% end %>

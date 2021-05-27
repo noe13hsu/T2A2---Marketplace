@@ -2,7 +2,7 @@
     <div class="d-flex flex-row flex-wrap justify-content-center mt-2">
         <div class="p-3">
             <% if @product.cover.attached? %>
-                <%= image_tag @product.cover, width: 280, height: 330 %>
+                <%= cl_image_tag @product.cover.key, crop: :scale, width: 110, height: 145, cloud_name: "noe13hsu" %>
             <% else %>
                 <%= image_tag src="https://via.placeholder.com/280x330" %>
             <% end %>

@@ -9,7 +9,7 @@
                 <% order.order_items.each do |item| %>
                     <div class="d-flex flex-row mt-2">
                         <% if item.product.cover.attached? %>
-                            <%= image_tag cart_item.product.cover, width: 110, height: 130 %>
+                            <%= cl_image_tag item.product.cover.key, crop: :scale, width: 110, height: 145, cloud_name: "noe13hsu" %>
                         <% else %>
                             <%= image_tag src="https://via.placeholder.com/110x130" %>
                         <% end %>
