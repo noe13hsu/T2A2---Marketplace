@@ -43,7 +43,7 @@
           <% if product.cover.attached? %>
             <%= cl_image_tag product.cover.key, crop: :scale, width: 110, height: 145, cloud_name: "noe13hsu" %>
           <% else %>
-            <%= image_tag src="https://via.placeholder.com/110x130" %>
+            <%= image_tag src="https://via.placeholder.com/110x145" %>
           <% end %>
           <div class="ms-2">
             <p class="mb-0"><strong><%= product.name %></strong></p>
