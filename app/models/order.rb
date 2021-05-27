@@ -10,5 +10,6 @@ class Order < ApplicationRecord
       total_amount += item.product.price.to_f
     end
     return total_amount
+    # returns the total amount of an order
   end
 end

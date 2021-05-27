@@ -17,13 +17,16 @@ class User < ApplicationRecord
 
   def create_cart
     Cart.create!(user_id: self.id)
+    # create a cart for user after they register a new account
   end
 
   def add_genuine
     self.add_role :genuine
+    # give newly registered user the genuine role 
   end
      
   def full_name
     return "#{first_name} #{last_name}"
+    # returns the full name of a user
   end
 end

@@ -13,5 +13,6 @@ class ApplicationController < ActionController::Base
   def forbidden
     flash.alert = "Unauthorized action"
     redirect_to root_path
+    # rescue pundit NotAuthorizedError with an alert and redirect user back to home page
   end
 end
