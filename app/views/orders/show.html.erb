@@ -9,9 +9,9 @@
                 <% order.order_items.each do |item| %>
                     <div class="d-flex flex-row mt-2">
                         <% if item.product.cover.attached? %>
-                            <%= cl_image_tag item.product.cover.key, crop: :scale, width: 110, height: 145, cloud_name: "noe13hsu" %>
+                            <%= cl_image_tag item.product.cover.key, crop: :scale, width: 60, height: 80, cloud_name: "noe13hsu" %>
                         <% else %>
-                            <%= image_tag src="https://via.placeholder.com/110x145" %>
+                            <%= image_tag src="https://via.placeholder.com/60x80" %>
                         <% end %>
                         <div class="ms-2">
                             <p class="mb-0"><strong><%= item.product.name %></strong></p>
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 <% end %>
-                <h5 class="mt-2">Total: $<%= "%.2f" % order.total_amount %></h5>
+                <h5 class="mt-2">Subtotal: $<%= "%.2f" % order.total_amount %></h5>
             </div>
         <% end %>
     <% end %>

@@ -11,9 +11,9 @@
         <% @cart_items.each do |cart_item| %>
             <div class="d-flex border border-secondary m-2 p-2">
                 <% if cart_item.product.cover.attached? %>
-                    <%= cl_image_tag cart_item.product.cover.key, crop: :scale, width: 110, height: 145, cloud_name: "noe13hsu" %>
+                    <%= cl_image_tag cart_item.product.cover.key, crop: :scale, width: 100, height: 120, cloud_name: "noe13hsu" %>
                 <% else %>
-                    <%= image_tag src="https://via.placeholder.com/110x145" %>
+                    <%= image_tag src="https://via.placeholder.com/100x120" %>
                 <% end %>
                 <div class="ms-2">
                     <p class="mb-0"><strong><%= cart_item.product.name %></strong></p>
